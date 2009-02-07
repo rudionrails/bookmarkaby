@@ -5,7 +5,7 @@ Bookmarkaby provides a helper to easily enable your app with social bookmarking 
 
 == Installation
 
-Bookmarkaby is available both as plugin:
+Bookmarkaby is available as plugin:
 
   script/plugin install git://github.com/rudionrails/bookmarkaby.git 
 
