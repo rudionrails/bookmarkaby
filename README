@@ -1,0 +1,118 @@
+= Bookmarkaby
+
+Bookmarkaby provides a helper to easily enable your app with social bookmarking capabilities.
+
+
+== Installation
+
+Bookmarkaby is available both as plugin:
+
+  script/plugin install git://github.com/rudionrails/bookmarkaby.git 
+
+  
+== Usage
+
+Bookmarkaby is a really simple way to generate bookmarks in your view. For every
+given social bookmark service it generates the corresponding link. 
+
+You'll need to provide at least the :url of the site which wants to be bookmarked.
+Usually this could be the url of the current article of your blog, e.g. 
+http://www.example.com/my-article. Additionally to that, you can give 
+:title and :description parameters - they will be populated in case the social
+bookmarking service accepts those.
+
+=== Example with :url and :title
+
+<% bookmarkaby :url => "http://www.example.com/my-article", :title => 'My Article" do |b| -%>
+  <% b.bookmark :digg -%>
+  <% b.bookmark :reddit -%>
+<% end -%>
+
+generates:
+
+<div class="bookmarkaby">
+  <a href="http://digg.com/submit?phase=2&amp;url=http://www.example.com/my-article&amp;title=My Article&amp;bodytext=&amp;tags="><img alt="Digg" src="/images/digg.gif" /></a>
+  <a href="http://reddit.com/submit?url=http://www.example.com/my-article&amp;title=My Article"><img alt="Reddit" src="/images/reddit.gif" /></a>
+</div>
+
+
+Bookmarkaby generates an image link to every defined bookmark service. 
+The images are, by default, expected to be in public/images/, e.g. for :digg it 
+will look for /images/digg.gif. If no image is available the alt attribute for
+the image will be displayed as text. You are able to change this default image 
+location by providing :image_prefix.
+
+=== Example with :image_prefix
+
+<% bookmarkaby :url => "http://www.example.com/my-article", :image_prefix => "bookmarkaby/" do |b| -%>
+  <% b.bookmark :digg -%>
+<% end -%>
+
+generates:
+
+<div class="bookmarkaby">
+  <a href="http://digg.com/submit?phase=2&amp;url=http://www.example.com/my-article&amp;title=My Article&amp;bodytext=&amp;tags=">
+    <img alt="Digg" src="/images/bookmarkaby/digg.gif" />
+  </a>
+</div>
+
+
+
+== Available Services
+
+:reddit
+:digg
+:delicious
+:stumbleupon
+:slashdot
+:technorati
+:newsvine
+:magnolia
+:snurl
+:spurl
+
+:twitter
+:windowslive
+:myspace
+:facebook
+:myaol
+:yahoo
+:google
+
+:linkarena
+:folkd
+:jumptags
+:simpy
+:propeller
+:furl
+:tinyurl
+:blinklist
+:blogmarks
+:diigo
+:blinkbits
+:smarking
+:netvouz
+
+# german ones
+:yigg_de
+:newsrider_de
+:linksilo_de
+:favit_de
+:favoriten_de
+:seekxl_de
+:kledy_de
+:readster_de
+:publishr_de
+:icio_de
+:mr_wong_de
+:webnews_de
+:bonitrust_de
+:oneview_de
+
+# other
+:bookmarks_cc
+
+
+
+Copyright (c) 2009 Rudolf Schmidt, released under the MIT license.
+
