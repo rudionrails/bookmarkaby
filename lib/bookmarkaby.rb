@@ -5,7 +5,10 @@ module Rudionrails
     def bookmarkaby ( options = {}, &block )
       bb = BookmarkBuilder.new( self, options )
       yield bb
-      concat( bb.to_html ) if bb.bookmarks?
+      # JM note: there was a call to concat in Rudolf Schmidt original code
+      # which did not work with Rails 2.1.2
+      # concat method comes from Rails 2.2.2 ActionView::Helpers::TextHelper
+      bb.to_html if bb.bookmarks?
     end
     
     class BookmarkBuilder
@@ -76,7 +79,8 @@ module Rudionrails
         @title  = options.delete(:title)
         @description   = options.delete(:description)
 
-        @image_prefix = options.delete(:image_prefix)
+        # default will be images/bookmarkaby/
+        @image_prefix = options.delete(:image_prefix) || "bookmarkaby/"
         
         @options = { :class => 'bookmarkaby' }.merge( options )
       end
