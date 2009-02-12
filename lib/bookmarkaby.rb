@@ -5,7 +5,7 @@ module Rudionrails
     def bookmarkaby ( options = {}, &block )
       bb = BookmarkBuilder.new( self, options )
       yield bb
-      concat( bb.to_html ) if bb.bookmarks?
+      concat_with_or_without_binding( bb.to_html, block.binding ) if bb.bookmarks?
     end
     
     class BookmarkBuilder
@@ -113,7 +113,16 @@ module Rudionrails
       end
 
     end
-
+    
+    private
+    
+    # This is for Rails downwards compatibility. Bookmarkaby was written for 
+    # Rails 2.2.2, but this should also work for older versions.
+    # inspired by Jean-Michel Garnier ;-)
+    def concat_with_or_without_binding( value, binding )
+      return concat( value ) if Rails::VERSION::STRING >= "2.2.0"
+      concat( value, binding ) 
+    end
   end
 end
 
