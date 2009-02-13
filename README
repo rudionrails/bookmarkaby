@@ -32,8 +32,8 @@ bookmarking service accepts those.
 generates:
 
 <div class="bookmarkaby">
-  <a href="http://digg.com/submit?phase=2&amp;url=http://www.example.com/my-article&amp;title=My Article&amp;bodytext=&amp;tags="><img alt="Digg" src="/images/digg.gif" /></a>
-  <a href="http://reddit.com/submit?url=http://www.example.com/my-article&amp;title=My Article"><img alt="Reddit" src="/images/reddit.gif" /></a>
+  <a href="http://digg.com/submit?phase=2&amp;url=http://www.example.com/my-article&amp;title=My Article&amp;bodytext=&amp;tags="><img alt="Digg" src="/images/bookmarkaby/digg.gif" /></a>
+  <a href="http://reddit.com/submit?url=http://www.example.com/my-article&amp;title=My Article"><img alt="Reddit" src="/images/bookmarkaby/reddit.gif" /></a>
 </div>
 
 
@@ -46,7 +46,7 @@ location by providing :image_prefix.
 
 === Example with :image_prefix
 
-<% bookmarkaby :url => "http://www.example.com/my-article", :image_prefix => "bookmarkaby/" do |b| -%>
+<% bookmarkaby :url => "http://www.example.com/my-article", :image_prefix => "bkm/" do |b| -%>
   <% b.bookmark :digg -%>
 <% end -%>
 
@@ -54,7 +54,7 @@ generates:
 
 <div class="bookmarkaby">
   <a href="http://digg.com/submit?phase=2&amp;url=http://www.example.com/my-article&amp;title=My Article&amp;bodytext=&amp;tags=">
-    <img alt="Digg" src="/images/bookmarkaby/digg.gif" />
+    <img alt="Digg" src="/images/bkm/digg.gif" />
   </a>
 </div>
 
