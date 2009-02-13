@@ -9,7 +9,9 @@ module Rudionrails
     end
     
     class BookmarkBuilder
-
+      
+      DEFAULT_IMAGE_PREFIX = "bookmarkaby/" unless defined? DEFAULT_IMAGE_PREFIX
+      
       URL = '{URL}' unless defined? URL
       TITLE = '{TITLE}' unless defined? TITLE
       DESCRIPTION  = '{DESCRIPTION}' unless defined? DESCRIPTION
@@ -76,7 +78,8 @@ module Rudionrails
         @title  = options.delete(:title)
         @description   = options.delete(:description)
 
-        @image_prefix = options.delete(:image_prefix)
+        # default will be images/bookmarkaby/
+        @image_prefix = options.delete(:image_prefix) || DEFAULT_IMAGE_PREFIX
         
         @options = { :class => 'bookmarkaby' }.merge( options )
       end
@@ -117,11 +120,10 @@ module Rudionrails
     private
     
     # This is for Rails downwards compatibility. Bookmarkaby was written for 
-    # Rails 2.2.2, but this should also work for older versions.
-    # inspired by Jean-Michel Garnier ;-)
+    # Rails 2.2.2, but this should also work for older versions now.
     def concat_with_or_without_binding( value, binding )
-      return concat( value ) if Rails::VERSION::STRING >= "2.2.0"
-      concat( value, binding ) 
+      return concat( value, binding ) if defined?(::Rails) && ::Rails::VERSION::STRING < "2.2.0"
+      concat( value ) 
     end
   end
 end

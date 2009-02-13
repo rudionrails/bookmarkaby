@@ -21,6 +21,7 @@ http://www.example.com/my-article. Additionally to that, you can give
 :title and :description parameters - they will be populated in case the social
 bookmarking service accepts those.
 
+
 === Example with :url and :title
 
 <% bookmarkaby :url => "http://www.example.com/my-article", :title => 'My Article" do |b| -%>
@@ -41,6 +42,7 @@ The images are, by default, expected to be in public/images/, e.g. for :digg it
 will look for /images/digg.gif. If no image is available the alt attribute for
 the image will be displayed as text. You are able to change this default image 
 location by providing :image_prefix.
+
 
 === Example with :image_prefix
 

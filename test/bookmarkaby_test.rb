@@ -10,7 +10,9 @@ class BookmarkabyTest < ActiveSupport::TestCase
   
   def setup
     @view = ::ActionView::Base.new
-    @view.output_buffer = ''
+    @view.output_buffer = ""
+    
+    @template = ""
   end
   
   test "should display nothing if no bookmarks given" do
@@ -31,7 +33,7 @@ class BookmarkabyTest < ActiveSupport::TestCase
   test "should display default image" do
     image = "digg.gif"
     bkm = @view.bookmarkaby { |b| b.bookmark :digg }
-    assert_match(/\/images\/#{image}/, bkm)
+    assert_match(/\/images\/#{Rudionrails::Bookmarkaby::BookmarkBuilder::DEFAULT_IMAGE_PREFIX}#{image}/, bkm)
   end
   
   test "should display image_prefix" do
