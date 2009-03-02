@@ -11,6 +11,6 @@ begin
 rescue LoadError
   $stderr.puts "Unable to run Bookmarkaby tests. `gem install actionpack` and try again."
 else
-  require File.dirname(__FILE__) + "/../lib/bookmarkaby"
+  require File.dirname(__FILE__) + "/../init"
 end
 
