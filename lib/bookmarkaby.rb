@@ -1,7 +1,7 @@
 module Rudionrails
   module Bookmarkaby
 
-    VERSION = "0.2.0"
+    VERSION = "0.2.1"
   
     # takes :title, :url as options
     def bookmarkaby ( options = {}, &block )
